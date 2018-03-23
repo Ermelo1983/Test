@@ -7,8 +7,35 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <%= render 'layouts/navbar'%>
   <body>
-    <%= yield %>
+    <div class='container'>
+      <% flash.each do |key, value| %>
+          <%-
+              # Convert devise keys to bootstrap keys
+              key = :info if key == :notice
+              key = :warning if key == :alert
+          -%>
+          <%= content_tag(:div, class: "flash alert alert-#{key}") do %>
+              <%= button_tag '×', class: 'close', data: {dismiss: 'alert'} %>
+              <% if value.is_a?(Hash) %>
+                  <%= value[:text] %>
+                  <% if value[:button] %>
+                      <div class="text-center"><%= link_to value[:button][:text], value[:button][:link], class: 'btn pull' %></div>
+                  <% end %>
+              <% elsif value.is_a? Array %>
+                  <ul class="list-unstyled">
+                    <% value.each do |array_value| %>
+                        <%= content_tag :li, array_value %>
+                    <% end %>
+                  </ul>
+              <% else %>
+                  <%= value %>
+              <% end %>
+          <% end %>
+      <% end %>
+      <%= yield %>
+    </div>
+
   </body>
-</html>
+  </html>

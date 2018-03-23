@@ -12,6 +12,11 @@ gem 'rails', '~> 5.1.4'
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
+
+# Use bootstrap for styling
+gem 'bootstrap', '~> 4.0.0'
+gem 'jquery-rails'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -34,7 +39,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 #
 # Use Devise for registering/authenticate users
-gem 'devise'
+gem 'devise', '~> 4.4.3'
 
 
 group :development, :test do
