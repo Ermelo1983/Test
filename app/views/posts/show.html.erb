@@ -1,2 +1,6 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<%= @post.created_at.to_date %>
+<p><%= @post.title %></p>
+<p><%= @post.body %></p>
+<div>
+<%= cl_image_tag(@post.image_url) %>
+</div>

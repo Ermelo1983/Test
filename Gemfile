@@ -36,7 +36,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 # Use simple_form to create forms
 gem 'simple_form'
-
+#use carrierwave to upload images
+gem 'carrierwave'
+# use cloudinary for managing external saved images, with smart image resizing
+gem 'cloudinary'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 #

@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+
+
   def index
     @posts = Post.all
   end
@@ -21,12 +23,10 @@ class PostsController < ApplicationController
 
   def delete
   end
-  
+
   private
-  
+
   def post_params
-    params.required(:post).permit(:title, :body, :image_url)  
+    params.required(:post).permit(:title, :body, :image_url)
   end
 end
-
-

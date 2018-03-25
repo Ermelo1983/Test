@@ -1,9 +1,7 @@
-<%= 'this is my form' %>
-
 <%= simple_form_for @post do |f| %>
   <%= f.input :title %>
   <%= f.input :body %>
-  <%= f.input :image_url %>
+  <%= f.file_field :image_url %>
 
   <%= f.button :submit %>
 <% end %>
