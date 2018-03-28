@@ -4,9 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  
+
   has_many :posts
-  
+  has_one :profile
+  accepts_nested_attributes_for :profile
+
+
   def full_name
     ([first_name, last_name] - ['']).compact.join(' ')
   end

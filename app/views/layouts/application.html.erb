@@ -37,19 +37,17 @@
     <div class='row'>
       <div class='col-md-3'>
         <div class="jumbotron">
-          <%= "hallo"%>
+          <% if current_user.present? %>
+          <%= "Welkom terug #{current_user.full_name}"%>
+          <% end %>
+          <% if current_user.present? && current_user.profile.blank? %>
+          <p><%= link_to "Click her to complete your profile", new_profile_path%></p>
+          <% end %>
         </div>
       </div>
+
       <div class='col-md-5'>
-        <div class="jumbotron">
-          <%= yield %>
-        </div>
-      </div>
-      <div class='col-md-2'>
-        <div class="jumbotron">
-
-          <%= "doei" %>
-        </div>
+        <%= yield %>
       </div>
 
       <div class='col-md-2'>
@@ -58,8 +56,12 @@
         </div>
       </div>
 
+      <div class='col-md-2'>
+        <div class="jumbotron">
+          <%= "doei" %>
+        </div>
+      </div>
     </div>
   </div>
-
 </body>
 </html>

@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
 
-
   def index
     @posts = Post.all
   end
@@ -11,7 +10,7 @@ class PostsController < ApplicationController
 
   def create
     Post.create(post_params.merge(user_id: current_user.id))
-     redirect_to posts_path
+     redirect_to root_path
   end
 
   def show
