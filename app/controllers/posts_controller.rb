@@ -17,8 +17,23 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  def update
+  def edit
+    @user = current_user
+    @post = Post.find(params[:id])
   end
+
+    def update
+    @user = current_user
+    @post = Post.find(params[:id])
+
+    if @post.update_attributes(post_params)
+      flash[:success] = "Post updated!"
+      redirect_to root_path(current_user)
+    else
+      render action: :edit
+    end
+  end
+
 
   def delete
   end

@@ -1,0 +1,16 @@
+<h1><%= current_user.full_name %>
+</h1>
+<% profile = current_user.profile %>
+<div class="profile_image">
+<%= cl_image_tag(profile.profile_picture_url)%>
+</div>
+<br/>
+<br/>
+<p> Age: <%= ((profile.date_of_birth.to_date .. Date.today.to_date).count/365) %>
+<p> Gender: <%= profile.gender %> </p>
+<p>Street: <%= profile.street %></p>
+<p>House number: <%= profile.house_number %></p>
+<p>Zip or postal code: <%= profile.zip_or_postal_code %></p>
+<p>Town: <%= profile.town %></p>
+<p>Country: <%= profile.country %></p>
+<p>Profile last updated at: <%= profile.created_at.to_date %></p>

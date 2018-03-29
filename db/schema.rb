@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20180326091022) do
 
   create_table "profiles", force: :cascade do |t|
     t.date "date_of_birth"
+    t.string "gender"
     t.string "street"
     t.string "house_number"
     t.string "zip_or_postal_code"
