@@ -1,0 +1,86 @@
+
+<nav class="navbar navbar-expand-md bg-light navbar-light">
+  <!-- Brand -->
+  <%= image_tag '24rakno6gmuvcij93l48_bigger.png', class: 'img-responsive'  %>
+  <a class="navbar-brand" <%=link_to 'Nedbook', root_path%></a>
+
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          root
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" <%= link_to 'Root', root_path %></a>
+          <a class="dropdown-item" <%= link_to 'Add new root', root_path %></a>
+          <!-- <a class="dropdown-item" href="#">Something else here</a> -->
+          <div class="dropdown-divider"></div>
+
+          <a class="dropdown-item" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            roots2
+          </a>
+          <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" <%= link_to 'root2', root_path %></a>
+            <a class="dropdown-item" <%= link_to 'Add new root2', root_path %></a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Roots3
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" <%= link_to 'root3', root_path %></a>
+          <a class="dropdown-item" <%= link_to 'Add new root3', root_path %></a>
+          <!-- <a class="dropdown-item" href="#">Something else here</a> -->
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Roots4
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" <%= link_to 'Roots4', root_path %></a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Roots5
+          </a>
+          <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" <%= link_to 'Roots5', root_path %></a>
+            <a class="dropdown-item" <%= link_to 'Add new root', root_path %></a>
+          </div>
+        </div>
+      </li>
+      <% if current_user.present?%>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          root
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" <%= link_to 'root6', root_path %></a>
+          <a class="dropdown-item" <%= link_to 'Add new root', root_path %></a>
+          <!-- <a class="dropdown-item" href="#">Something else here</a> -->
+        </div>
+      </li>
+      <% end %>
+    </ul>
+  </div
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+  <ul class="nav navbar-nav navbar">
+    <% if current_user.present?%>
+    <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+    <% else %>
+    <li><%= link_to "Login", new_user_session_path %></li>
+
+    <% end%>
+  </ul>
+</div>
+</nav>

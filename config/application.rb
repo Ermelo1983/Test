@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+AVAILABLE_LANGUAGES = {en: "English", de: "Deutsch", nl: "Nederlands"}
+
 module Nedbook
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -14,5 +16,7 @@ module Nedbook
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+
   end
 end

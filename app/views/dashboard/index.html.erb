@@ -1,0 +1,17 @@
+<%= link_to 'create new post', new_post_path %>
+
+ <% current_user.posts.each do |post| %>
+ <div class="jumbotron">
+ <!-- <p><%= post.title %></p> -->
+ <div class="post_image">
+ <%= cl_image_tag(post.image_url)%>
+ </div>
+ <div class="post_body">
+ <p><%= post.body %></p>
+</div>
+
+ <p><%= link_to 'edit post', edit_post_path(id: post.id) %></p>
+ <p><%= "created at: #{post.created_at.to_date}" %></p>
+ <p><%= "updated at: #{post.updated_at.to_date}" %></p>
+ </div>
+  <% end %>

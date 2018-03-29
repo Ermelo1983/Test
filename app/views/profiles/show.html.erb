@@ -1,0 +1,7 @@
+<h1>Profile</h1>
+<p label="hoi"><%= @profile.created_at.to_date %></p>
+<p><%= @profile.street %></p>
+<p><%= @profile.zip_or_postal_code %></p>
+<div>
+<%= cl_image_tag(@profile.profile_image_url)%>
+</div>

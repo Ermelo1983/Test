@@ -1,14 +1,67 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Nedbook</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title style="color:white; font-family:Cronos;">Nedbook</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<%= render 'layouts/navbar'%>
+<body>
+  <div class='container-fluid'>
+    <% flash.each do |key, value| %>
+    <%-
+    # Convert devise keys to bootstrap keys
+    key = :info if key == :notice
+    key = :warning if key == :alert
+    -%>
+    <%= content_tag(:div, class: "flash alert alert-#{key}") do %>
+    <%= button_tag '×', class: 'close', data: {dismiss: 'alert'} %>
+    <% if value.is_a?(Hash) %>
+    <%= value[:text] %>
+    <% if value[:button] %>
+    <div class="text-center"><%= link_to value[:button][:text], value[:button][:link], class: 'btn pull' %></div>
+    <% end %>
+    <% elsif value.is_a? Array %>
+    <ul class="list-unstyled">
+      <% value.each do |array_value| %>
+      <%= content_tag :li, array_value %>
+      <% end %>
+    </ul>
+    <% else %>
+    <%= value %>
+    <% end %>
+    <% end %>
+    <% end %>
+    <div class='row'>
+      <div class='col-md-3'>
+        <div class="jumbotron">
 
-  <body>
-    <%= yield %>
-  </body>
+          <% if current_user.present? && current_user.profile.blank? %>
+          <p><%= link_to "Click here to complete your profile", new_profile_path%></p>
+          <% elsif current_user.present? && !current_user.profile.blank? %>
+          <%= render "profiles/show" %>
+                    <% end %>
+        </div>
+      </div>
+
+      <div class='col-md-5'>
+        <%= yield %>
+      </div>
+
+      <div class='col-md-2'>
+        <div class="jumbotron">
+          <%= "doei" %>
+        </div>
+      </div>
+
+      <div class='col-md-2'>
+        <div class="jumbotron">
+          <%= "doei" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
 </html>
