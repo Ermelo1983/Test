@@ -36,13 +36,24 @@
     <% end %>
     <div class='row'>
       <div class='col-md-3'>
-        <div class="jumbotron">
+          <div class="jumbotron">
 
           <% if current_user.present? && current_user.profile.blank? %>
           <p><%= link_to "Click here to complete your profile", new_profile_path%></p>
           <% elsif current_user.present? && !current_user.profile.blank? %>
           <%= render "profiles/show" %>
-                    <% end %>
+          <% end %>
+
+          </div>
+        <div class="jumbotron">
+          <h1><%= "Friends" %> </h1>
+          <% if current_user.present? %>
+          <% current_user.friends.each do |friend| %>
+          <div class="profile_image" %>
+            <%= cl_image_tag(friend.profile.profile_picture_url) %>
+        </div>
+            <% end %>
+          <% end %>
         </div>
       </div>
 

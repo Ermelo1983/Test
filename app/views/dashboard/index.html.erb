@@ -1,17 +1,33 @@
 <%= link_to 'create new post', new_post_path %>
 
- <% current_user.posts.each do |post| %>
+<% post_ids = current_user.friends.ids %>
+<% post_ids.push(current_user.id) %>
+<% post = Post.where(user_id: post_ids)%>
+
+
+ <% post.each do |post| %>
+
  <div class="jumbotron">
  <!-- <p><%= post.title %></p> -->
+ <div class="row">
+ <div class="profile_image"%>
+   <%=cl_image_tag(post.user.profile.profile_picture_url)%>
+   </div>
+   <h4><%= post.user.full_name %></h4>
+
+ </div>
+
  <div class="post_image">
  <%= cl_image_tag(post.image_url)%>
  </div>
  <div class="post_body">
  <p><%= post.body %></p>
 </div>
-
+  <% if post.user_id == current_user.id %>
  <p><%= link_to 'edit post', edit_post_path(id: post.id) %></p>
+ <% end %>
  <p><%= "created at: #{post.created_at.to_date}" %></p>
  <p><%= "updated at: #{post.updated_at.to_date}" %></p>
  </div>
+
   <% end %>

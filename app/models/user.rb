@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   has_many :posts
   has_one :profile
+  has_many :friendships
+  has_many :friends, :through => :friendships
   accepts_nested_attributes_for :profile
 
 
