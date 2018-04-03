@@ -4,12 +4,16 @@ class FriendshipsController < ApplicationController
   end
 
   def new
-    @friendship = Friendsip.new
+    @friendship = Friendship.new
   end
 
   def create
     Friendship.create(friendship_params)
      redirect_to root_path
+  end
+
+  def show
+    @friendship = Friendship.find(params[:id])
   end
 
   def update
@@ -21,6 +25,6 @@ class FriendshipsController < ApplicationController
   private
 
   def friendship_params
-    params.required(:friendship).permit(:user_id, :friend_id)
+    params.permit(:friend_id, :user_id)
   end
 end

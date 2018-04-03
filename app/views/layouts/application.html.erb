@@ -48,6 +48,7 @@
         <div class="jumbotron">
           <h1><%= "Friends" %> </h1>
           <% if current_user.present? %>
+          <p><%= link_to "Search new friends", new_friendship_path%></p>
           <% current_user.friends.each do |friend| %>
           <div class="profile_image" %>
             <%= cl_image_tag(friend.profile.profile_picture_url) %>
