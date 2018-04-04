@@ -1,15 +1,26 @@
 <% @users.each do |user| %>
 <% if user.id != current_user.id%>
   <%= user.full_name %>
-  <%= user.id%>
   <div class="profile_image">
+    <% if user.profile.present? && !user.profile.profile_picture_url.blank?%>
     <%= cl_image_tag(user.profile.profile_picture_url) %>
+    <% elsif !user.profile.present?%>
+    <%= image_tag 'gender_neutral.png'%>
+    <% else %>
+    <% if user.profile.gender == "Female" %>
+      <%= image_tag 'woman.jpg'%>
+      <% elsif user.profile.gender == "Male"%>
+      <%= image_tag 'man.png'%>
+    <% else %>
+      <%= image_tag 'gender_neutral.png'%>
+      <% end %>
+    <% end %>
+
   </div>
     <% if current_user.friendships.ids.present? %>
-      <% if current_user.friendships.map(&:friend_id).include? user.id%>
-          <div>
-            <%=  "delete"%>
-          </div>
+    <% friend = current_user.friendships.map(&:friend_id).include? user.id%>
+      <% if friend%>
+            <%=  link_to "delete", friendship_path(id: current_user.friendships.where(friend_id: user.id).ids), :method => :delete %>
         <% else %>
           <div>
             <%=  link_to "add friend" ,friendships_path(:friend_id => user.id, :user_id => current_user.id), :method => :post%>
