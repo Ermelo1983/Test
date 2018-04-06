@@ -24,3 +24,5 @@
 <p>Town: <%= user_profile.town %></p>
 <p>Country: <%= user_profile.country %></p>
 <p>Profile last updated at: <%= user_profile.created_at.to_date %></p>
+
+<%= link_to "update profile", edit_profile_path(user_profile.id) %>
