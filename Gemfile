@@ -36,6 +36,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 # Use simple_form to create forms
 gem 'simple_form'
+# for paginating posts
+gem 'will_paginate', '~> 3.1.0'
+
 #use carrierwave to upload images
 gem 'carrierwave'
 # use cloudinary for managing external saved images, with smart image resizing

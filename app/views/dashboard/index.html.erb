@@ -3,31 +3,53 @@
 <% post_ids = current_user.friends.ids %>
 <% post_ids.push(current_user.id) %>
 <% post = Post.where(user_id: post_ids)%>
+<% post = post.paginate(:page => params[:page], :per_page => 4)%>
 
 
- <% post.each do |post| %>
+<% post.each do |post| %>
+<div class="jumbotron">
+  <!-- <p><%= post.title %></p> -->
+  <div class="row">
+    <div class="user_post_image"%>
+      <%=cl_image_tag(post.user.profile.profile_picture_url)%>
+    </div>
 
- <div class="jumbotron">
- <!-- <p><%= post.title %></p> -->
- <div class="row">
- <div class="profile_image"%>
-   <%=cl_image_tag(post.user.profile.profile_picture_url)%>
-   </div>
-   <h4><%= post.user.full_name %></h4>
-
- </div>
-
- <div class="post_image">
- <%= cl_image_tag(post.image_url)%>
- </div>
- <div class="post_body">
- <p><%= post.body %></p>
-</div>
-  <% if post.user_id == current_user.id %>
- <p><%= link_to 'edit post', edit_post_path(id: post.id) %></p>
- <% end %>
- <p><%= "created at: #{post.created_at.to_date}" %></p>
- <p><%= "updated at: #{post.updated_at.to_date}" %></p>
- </div>
+    <h4><%= post.user.full_name %></h4>
+  </div>
+  <div class="post_image">
+    <%= cl_image_tag(post.image_url)%>
+  </div>
+  <div class="post_body">
+    <p><%= post.body %></p>
+  </div>
+  
+  <% if Comment.where(post_id: post.id).present? %>
+  <% post.comments.each do |comment| %>
+  <div class='row'>
+    <div class="user_comment_image"%>
+      <%=cl_image_tag(comment.user.profile.profile_picture_url)%>
+    </div>
+    <div class="comment_body">
+      <%= comment.body %>
+    </div>
+  </div>
 
   <% end %>
+  <% end %>
+  <% if post.user_id == current_user.id %>
+  <p><%= link_to 'edit post', edit_post_path(id: post.id) %></p>
+  <% end %>
+
+  <div class="jumbotron">
+    <%= render 'comments/form', post: post.id%>
+  </div>
+  <p><%= "created at: #{post.created_at.to_date}" %></p>
+</div>
+<% end %>
+<div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info post %>
+  </div>
+
+  <%= will_paginate post, :container => false %>
+</div>
