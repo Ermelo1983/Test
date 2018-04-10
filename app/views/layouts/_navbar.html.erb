@@ -19,17 +19,9 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" <%= link_to 'Post', posts_path %></a>
-          <!-- <a class="dropdown-item" href="#">Something else here</a> -->
-          <!-- If i need a divider in a dropdown -->
-          <!-- <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Users
-          </a>
-          <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" <%= link_to 'Users', users_path %></a>
-          </div>
-        </div> -->
-      </li>
+          <a class="dropdown-item" <%= link_to 'New post', new_post_path%></a>
+            </div>
+          </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Users
@@ -39,34 +31,6 @@
           <!-- <a class="dropdown-item" href="#">Something else here</a> -->
         </div>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Roots4
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" <%= link_to 'Roots4', root_path %></a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Roots5
-          </a>
-          <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" <%= link_to 'Roots5', root_path %></a>
-            <a class="dropdown-item" <%= link_to 'Add new root', root_path %></a>
-          </div>
-        </div>
-      </li>
-      <% if current_user.present?%>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          root
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" <%= link_to 'root6', root_path %></a>
-          <a class="dropdown-item" <%= link_to 'Add new root', root_path %></a>
-          <!-- <a class="dropdown-item" href="#">Something else here</a> -->
-        </div>
-      </li>
-      <% end %>
     </ul>
   </div
 

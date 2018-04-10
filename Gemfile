@@ -48,6 +48,8 @@ gem 'cloudinary'
 #
 # Use Devise for registering/authenticate users
 gem 'devise', '~> 4.4.3'
+#use Rspec for testing
+gem 'rspec-rails', '~> 3.7'
 
 gem 'country_select', '~> 2.5', '>= 2.5.2'
 

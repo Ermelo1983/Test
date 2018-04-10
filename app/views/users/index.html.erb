@@ -20,17 +20,15 @@
     <% if current_user.friendships.ids.present? %>
     <% friend = current_user.friendships.map(&:friend_id).include? user.id%>
       <% if friend%>
-            <%=  link_to "delete", friendship_path(id: current_user.friendships.where(friend_id: user.id).ids), :method => :delete %>
+            <p><%=  link_to "delete friendship", friendship_path(id: current_user.friendships.where(friend_id: user.id).ids), :method => :delete %></p>
         <% else %>
           <div>
-            <%=  link_to "add friend" ,friendships_path(:friend_id => user.id, :user_id => current_user.id), :method => :post%>
+            <p><%=  link_to "add as friend" ,friendships_path(:friend_id => user.id, :user_id => current_user.id), :method => :post%></p>
           </div>
         <%end %>
       <% else %>
-        <div class="button">
-          <%=  "Add friend" %>
-          <%=  link_to "add friend" ,friendships_path(:friend_id => user.id, :user_id => current_user.id), :method => :post%>
-
+        <div>
+          <p><%=  link_to "add as friend" ,friendships_path(:friend_id => user.id, :user_id => current_user.id), :method => :post%></p
         </div>
       <% end %>
     <% end %>

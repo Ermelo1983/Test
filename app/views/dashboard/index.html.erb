@@ -2,7 +2,7 @@
 
 <% post_ids = current_user.friends.ids %>
 <% post_ids.push(current_user.id) %>
-<% post = Post.where(user_id: post_ids)%>
+<% post = @posts.where(user_id: post_ids)%>
 <% post = post.paginate(:page => params[:page], :per_page => 4)%>
 
 
@@ -11,7 +11,7 @@
   <!-- <p><%= post.title %></p> -->
   <div class="row">
     <div class="user_post_image"%>
-      <%=cl_image_tag(post.user.profile.profile_picture_url)%>
+      <%=link_to cl_image_tag(post.user.profile.profile_picture_url), profile_path(id: post.user_id)%>
     </div>
 
     <h4><%= post.user.full_name %></h4>
@@ -22,12 +22,12 @@
   <div class="post_body">
     <p><%= post.body %></p>
   </div>
-  
-  <% if Comment.where(post_id: post.id).present? %>
+
+  <% if @comments.where(post_id: post.id).present? %>
   <% post.comments.each do |comment| %>
   <div class='row'>
     <div class="user_comment_image"%>
-      <%=cl_image_tag(comment.user.profile.profile_picture_url)%>
+      <%=link_to cl_image_tag(comment.user.profile.profile_picture_url), profile_path(id: comment.user.profile.user_id)%>
     </div>
     <div class="comment_body">
       <%= comment.body %>
