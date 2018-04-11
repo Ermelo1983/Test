@@ -36,6 +36,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 # Use simple_form to create forms
 gem 'simple_form'
+# for paginating posts
+gem 'will_paginate', '~> 3.1.0'
+
 #use carrierwave to upload images
 gem 'carrierwave'
 # use cloudinary for managing external saved images, with smart image resizing
@@ -46,6 +49,7 @@ gem 'cloudinary'
 # Use Devise for registering/authenticate users
 gem 'devise', '~> 4.4.3'
 
+
 gem 'country_select', '~> 2.5', '>= 2.5.2'
 
 group :development, :test do
@@ -54,6 +58,11 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  #use Rspec for testing
+  gem 'rspec-rails', '~> 3.7'
+  # use factorygirl to create fake data for testing
+  gem 'factory_bot_rails'
+
 end
 
 group :development do

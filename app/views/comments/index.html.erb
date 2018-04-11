@@ -1,13 +1,13 @@
-<%= "My own posts" %>
-<% posts = current_user.posts.order("updated_at DESC") %>
-<% posts.each do |post| %>
+<%= "comments" %>
+
+<% post.comments.posts.each do |comment| %>
 <div class="jumbotron">
 <!-- <p><%= post.title %></p> -->
 <div class="row">
 <div class="profile_image"%>
-  <%=cl_image_tag(post.user.profile.profile_picture_url)%>
+  <%=cl_image_tag(post.comment.profile_picture_url)%>
   </div>
-  <h4><%= post.user.full_name %></h4>
+  <h4><%= comment.user.full_name %></h4>
 
 </div>
 

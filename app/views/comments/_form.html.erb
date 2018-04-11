@@ -1,0 +1,7 @@
+<%= simple_form_for Comment.new do |f| %>
+  <%= f.input :body, label:  "write a comment" %>
+  <%= f.file_field :image_url %>
+  <%= f.hidden_field :post_id, :value => post %>
+
+  <%= f.button :submit %>
+<% end %>
