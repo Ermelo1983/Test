@@ -9,10 +9,12 @@
 <% post.each do |post| %>
 <div class="jumbotron">
   <!-- <p><%= post.title %></p> -->
+  <% if post.user.profile.present? %>
   <div class="row">
     <div class="user_post_image"%>
       <%=link_to cl_image_tag(post.user.profile.profile_picture_url), profile_path(id: post.user_id)%>
     </div>
+    <% end %>
 
     <h4><%= post.user.full_name %></h4>
   </div>
