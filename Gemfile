@@ -62,6 +62,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7'
   # use factorygirl to create fake data for testing
   gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
 
 end
 
