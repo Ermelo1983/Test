@@ -7,7 +7,7 @@ class Post < ApplicationRecord
 
   validates_presence_of :user_id
   validate :body_x_and_or_image_url
-  validates :image_url, :file_size => { :maximum => 5.megabytes.to_i  }
+  validates :image_url, :file_size => { :maximum => 10.megabytes.to_i  }
 
 
   def body_x_and_or_image_url

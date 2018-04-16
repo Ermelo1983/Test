@@ -1,3 +1,5 @@
+require 'file_size_validator'
+
 class Profile < ApplicationRecord
   mount_uploader :profile_picture_url, ImageUploader
 
@@ -12,7 +14,7 @@ class Profile < ApplicationRecord
   validates_presence_of :country
   validates_presence_of :language
   validates_presence_of :profile_picture_url
-
+  validates :profile_picture_url, :file_size => { :maximum => 10.megabytes.to_i  }
 
   GenderTypes = ["gender_neutral","Male", "Female"]
 
